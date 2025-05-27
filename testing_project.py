@@ -40,8 +40,7 @@ def test_1(driver):
     verifyButton.click()
     sleep(1)
     errorMessage = driver.find_element(By.XPATH, '//span[@class="error-block"]').text
-    # assert (errorMessage) == "This code is expired. Request a new code and try again.", "Test failed"
-    #bdo change error msg
+    assert (errorMessage) == "The code is incorrect. Check it carefully and try again.", "Test failed"
 
     sleep(3)
 
