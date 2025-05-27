@@ -39,7 +39,7 @@ def driver():
 #     verifyButton.click()
 #     sleep(1)
 #     errorMessage = driver.find_element(By.XPATH, '//span[@class="error-block"]').text
-#     assert (errorMessage) == "The code is incorrect. Check it carefully and try again.", "Test failed"
+#     assert (errorMessage) == "This code is expired. Request a new code and try again.", "Test failed"
 #
 #     sleep(30)
 
@@ -165,7 +165,7 @@ def driver():
 #     assert ('Cairo' in address),'Test Failed'
 #     assert ('1' in night),'Test Failed'
 
-#TC13 - Filtering search results by price range
+#TC13 - Filtering search results by price range mish kamel
 
 # def test_8(driver):
 #     searchBox = driver.find_element(By.XPATH, '//input[@placeholder="Where are you going?"]')
@@ -185,20 +185,10 @@ def driver():
 #     sleep(5)
 #     searchButton = driver.find_element(By.XPATH, '//span[text()="Search"]')
 #     searchButton.click()
-#     dev = driver.find_element(By.XPATH, '//div[@data-testid="filters-group"]')
-#     Minprice = dev.find_element(By.XPATH, './/span[@role="status"]').text.split(' ')[1]
-#     Minprice = int(Minprice)
-#     Maxprice = dev.find_element(By.XPATH, './/span[@role="status"]').text.split(' ')[-1]
-#     Maxprice = Maxprice.replace(',','')
-#     Maxprice = Maxprice.replace('+', '')
-#     Maxprice= int(Maxprice)
-#     actualprice = driver.find_element(By.XPATH, '//span[@data-testid="price-and-discounted-price"]').text.split(' ')[1]
-#     actualprice = actualprice.replace(',','')
-#     actualprice = int(actualprice)
-#     assert ((actualprice <= Maxprice) and (actualprice >= Minprice)), 'Test failed'
+#     sleep(30)
 
 
-
+#-----------------------------
 #TC14 - Registering with temporary email domains
 
 # def test_9(driver):
@@ -412,7 +402,7 @@ def driver():
 #     assert (petsText == "Pets are allowed on request. Charges may apply."), 'Test failed'
 
 
-# TC_29 - Verifying the “Free Cancellation” filter
+# TC_29 - Verifying the “Free Cancellation” filter (NOT DONE)
 
 # def test_17(driver):
 #
@@ -439,13 +429,12 @@ def driver():
 #     sleep(5)
 #     firstHotel = driver.find_element(By.XPATH, '//div[@data-testid="property-card"]')
 #     firstHotel.click()
-#     driver.switch_to.window(driver.window_handles[1])
 #     sleep(20)
 #     freeCancellationText = driver.find_element(By.XPATH, '//strong[@class="bui-text--variant-strong_2"]').text
 #     assert (freeCancellationText == "Free cancellation"), 'Test failed'
 
-#TC_34 - Verify the ability to book without
-
+#TC_34 - Verify the ability to book without registration (NOT DONE)
+#
 # def test_18(driver):
 #
 #     searchBox = driver.find_element(By.XPATH, '//input[@placeholder="Where are you going?"]')
@@ -465,20 +454,11 @@ def driver():
 #     sleep(5)
 #     searchButton = driver.find_element(By.XPATH, '//span[text()="Search"]')
 #     searchButton.click()
-#     sleep(5)
-#     availabilityButton = driver.find_element(By.XPATH, '//div[@data-testid="title"]')
+#     availabilityButton = driver.find_element(By.XPATH, '//button[@data-testid="availability-cta-btn"]')
 #     availabilityButton.click()
-#     sleep(5)
-#     driver.switch_to.window(driver.window_handles[1])
-#     firstReserveButton = driver.find_element(By.XPATH, '//span[@class="bui-button__text"]')
-#     firstReserveButton.click()
-#     sleep(2)
-#     secondReserveButton = driver.find_element(By.XPATH, '//span[@class="bui-button__text js-reservation-button__text"]')
-#     secondReserveButton.click()
-#     sleep(2)
-#     detailsHeader = driver.find_element(By.XPATH, '//h2[text()="Enter your details"]').text
-#     assert(detailsHeader == "Enter your details"), 'Test failed'
-#     sleep(5)
+#     selectRoomDropDownMenu = driver.find_element(By.XPATH, '//select[@class="hprt-nos-select js-hprt-nos-select"]')
+#     selectRoomDropDownMenu.click()
+
 
 #TC_35 - Checking social media sharing functionality
 
