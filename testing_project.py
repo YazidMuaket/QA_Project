@@ -29,7 +29,7 @@ def test_1(driver):
     email.send_keys('tu.pp.24.9.8@gmail.com')
     continueButton = driver.find_element(By.XPATH, '//span[text()="Continue with email"]')
     continueButton.click()
-    sleep(3)
+    sleep(8)
     for i in range (6):
         codeName= '//input[@name="code_'
         codeName = codeName+str(i)+'"]'
