@@ -39,7 +39,7 @@ def driver():
 #     verifyButton.click()
 #     sleep(1)
 #     errorMessage = driver.find_element(By.XPATH, '//span[@class="error-block"]').text
-#     assert (errorMessage) == "The code is incorrect. Check it carefully and try again.", "Test failed"
+#     assert (errorMessage) == "This code is expired. Request a new code and try again.", "Test failed"
 #
 #     sleep(30)
 
@@ -377,10 +377,42 @@ def driver():
 #     errorMessage = driver.find_element(By.XPATH, '//div[text()="Sorry, reservations for more than 90 nights aren\'t possible."]').text
 #     assert (errorMessage == "Sorry, reservations for more than 90 nights aren't possible."), 'Test failed'
 
+#TC_27 - Verifying map functionality on search results page
+
+# def test_16(driver):
+#     searchBox = driver.find_element(By.XPATH, '//input[@placeholder="Where are you going?"]')
+#     searchBox.send_keys('London')
+#     sleep(2)
+#     searchResult = driver.find_element(By.XPATH, '//div[@data-testid="autocomplete-result"]')
+#     searchResult.click()
+#     sleep(2)
+#     datePicker = driver.find_element(By.XPATH, '//button[@data-testid="searchbox-dates-container"]')
+#     datePicker.click()
+#     datePicker.click()
+#     today = str(date.today())
+#     datexPath = '//span[@data-date="'
+#     datexPath = datexPath + today + '"]'
+#     selectedDate = driver.find_element(By.XPATH, datexPath)
+#     selectedDate.click()
+#     sleep(5)
+#     searchButton = driver.find_element(By.XPATH, '//span[text()="Search"]')
+#     searchButton.click()
+#     firstHotel = driver.find_element(By.XPATH, '//div[@data-testid="property-card"]')
+#     firstHotel.click()
+#     sleep(5)
+#     driver.switch_to.window(driver.window_handles[1])
+#     sleep(5)
+#     mapButton = driver.find_element(By.XPATH, '//div[@data-testid="map-entry-point"]')
+#     mapButton.click()
+#     sleep(10)
+#     MapBox = driver.find_element(By.XPATH,'//input[@name="field"]')
+#     MapBoxtext = MapBox.get_attribute("placeholder")
+#     assert ('See distance from' in MapBoxtext),'Test Failed'
+
 
 # TC_28 - Checking for pet-friendly accommodation filter
 
-# def test_16(driver):
+# def test_17(driver):
 #
 #     searchBox = driver.find_element(By.XPATH, '//input[@placeholder="Where are you going?"]')
 #     searchBox.send_keys('London')
@@ -414,8 +446,8 @@ def driver():
 
 # TC_29 - Verifying the “Free Cancellation” filter
 
-# def test_17(driver):
-#
+# def test_18(driver):
+
 #     searchBox = driver.find_element(By.XPATH, '//input[@placeholder="Where are you going?"]')
 #     searchBox.send_keys('London')
 #     sleep(2)
@@ -444,9 +476,9 @@ def driver():
 #     freeCancellationText = driver.find_element(By.XPATH, '//strong[@class="bui-text--variant-strong_2"]').text
 #     assert (freeCancellationText == "Free cancellation"), 'Test failed'
 
-#TC_34 - Verify the ability to book without
+#TC_34 - Verify the ability to book without registration
 
-# def test_18(driver):
+# def test_19(driver):
 #
 #     searchBox = driver.find_element(By.XPATH, '//input[@placeholder="Where are you going?"]')
 #     searchBox.send_keys('London')
@@ -480,9 +512,10 @@ def driver():
 #     assert(detailsHeader == "Enter your details"), 'Test failed'
 #     sleep(5)
 
+
 #TC_35 - Checking social media sharing functionality
 
-# def test_19(driver):
+#def test_20(driver):
 #
 #     searchBox = driver.find_element(By.XPATH, '//input[@placeholder="Where are you going?"]')
 #     searchBox.send_keys('London')
@@ -521,7 +554,7 @@ def driver():
 
 #TC_36 - Ensure content updates properly when switching languages
 
-# def test_20(driver):
+# def test_21(driver):
 #     beforeSwitchText = driver.find_element(By.XPATH, '//span[@data-testid="herobanner-title1"]').text
 #     switchlanguage = driver.find_element(By.XPATH, '//button[@data-testid="header-language-picker-trigger"]')
 #     switchlanguage.click()
@@ -532,3 +565,295 @@ def driver():
 #     afterSwitchText = driver.find_element(By.XPATH, '//span[@data-testid="herobanner-title1"]').text
 #     assert(beforeSwitchText != afterSwitchText), 'Test Failed'
 #     sleep(5)
+
+#TC_41 - Ensure multi-city trips can be booked
+
+# def test_22(driver):
+#     flightsButton = driver.find_element(By.ID, 'flights')
+#     flightsButton.click()
+#     multichoose = driver.find_element(By.XPATH, '//div[@role="combobox"]')
+#     multichoose.click()
+#     multiC = driver.find_element(By.ID, 'multicity')
+#     multiC.click()
+#     firstSearchDir = driver.find_element(By.XPATH,'//input[@aria-label="Flight 1 destination"]' )
+#     firstSearchDir.send_keys('London')
+#     sleep(2)
+#     firstdir = driver.find_element(By.XPATH, '//li[@role="option"]')
+#     firstdir.click()
+#     firstdate =  driver.find_elements(By.XPATH,'//div[@aria-label="Departure date"]')[0]
+#     firstdate.click()
+#     sleep(5)
+#     today = date.today().strftime('%B %d, %Y')
+#
+#     datexPath = '//div[@aria-label="'
+#     datexPath = datexPath + today + '"]'
+#     selectedDate = driver.find_element(By.XPATH, datexPath)
+#     selectedDate.click()
+#     sleep(5)
+#
+#     seconddate = driver.find_elements(By.XPATH,'//div[@aria-label="Departure date"]')[1]
+#     seconddate.click()
+#     sleep(5)
+#     nextDate = (date.today() + timedelta(2)).strftime('%B %#d, %Y')
+#     print(nextDate)
+#     datexPath = '//div[@aria-label="'
+#     datexPath = datexPath + nextDate + '"]'
+#     selectedDate = driver.find_element(By.XPATH, datexPath)
+#     selectedDate.click()
+#     sleep(5)
+#
+#
+#     thirdSearchDir = driver.find_element(By.XPATH,'//input[@aria-label="Flight 3 origin"]' )
+#     thirdSearchDir.send_keys('TLV')
+#     sleep(2)
+#     firstdir = driver.find_element(By.XPATH, '//li[@role="option"]')
+#     firstdir.click()
+#
+#
+#     secondSearchDir = driver.find_element(By.XPATH,'//input[@aria-label="Flight 3 destination"]' )
+#     secondSearchDir.send_keys('Dubai')
+#     sleep(5)
+#     seconddir = driver.find_element(By.XPATH, '//li[@role="option"]')
+#     seconddir.click()
+#
+#
+#     thirddate = driver.find_elements(By.XPATH,'//div[@aria-label="Departure date"]')[2]
+#     thirddate.click()
+#     sleep(5)
+#     nextDate2 = (date.today() + timedelta(10)).strftime('%B %#d, %Y')
+#     print(nextDate2)
+#     datexPath = '//div[@aria-label="'
+#     datexPath = datexPath + nextDate2 + '"]'
+#     selectedDate = driver.find_element(By.XPATH, datexPath)
+#     selectedDate.click()
+#     sleep(5)
+#
+#     searchB = driver.find_element(By.XPATH,'//button[@aria-label="Search"]')
+#     searchB.click()
+#     sleep(5)
+
+
+#TC_TC_43 - Ensure users can filter hotels based on proximity to popular landmarks
+#
+# def test_23(driver):
+#
+#     searchBox = driver.find_element(By.XPATH, '//input[@placeholder="Where are you going?"]')
+#     searchBox.send_keys('Paris')
+#     sleep(2)
+#     searchResult = driver.find_element(By.XPATH, '//div[@data-testid="autocomplete-result"]')
+#     searchResult.click()
+#     sleep(2)
+#     datePicker = driver.find_element(By.XPATH, '//button[@data-testid="searchbox-dates-container"]')
+#     datePicker.click()
+#     datePicker.click()
+#     today = str(date.today())
+#     datexPath = '//span[@data-date="'
+#     datexPath = datexPath + today + '"]'
+#     selectedDate = driver.find_element(By.XPATH, datexPath)
+#     selectedDate.click()
+#     sleep(5)
+#     searchButton = driver.find_element(By.XPATH, '//span[text()="Search"]')
+#     searchButton.click()
+#     sleep(5)
+#     landmarksSection = driver.find_element(By.XPATH, '//div[@data-filters-group="popular_nearby_landmarks"]')
+#     firstLandmarkName = landmarksSection.find_element(By.XPATH,'.//div[@data-testid="filters-group-label-content"]').text
+#     firstLandmarkCheckBox = landmarksSection.find_element(By.XPATH,'.//input[@type="checkbox"]')
+#     firstLandmarkCheckBox.click()
+#     sleep(10)
+#     firstHotel = driver.find_element(By.XPATH, '//div[@data-testid="property-card"]')
+#     firstHotel.click()
+#     sleep(5)
+#     driver.switch_to.window(driver.window_handles[1])
+#     sleep(5)
+#     hotelDescription = driver.find_element(By.XPATH, '//div[@class = "hp-description"]').text
+#     assert(firstLandmarkName in hotelDescription), 'Test Failed'
+
+
+#TC_44 - Try to book without a credit card filter
+
+# def test_24(driver):
+#
+#     searchBox = driver.find_element(By.XPATH, '//input[@placeholder="Where are you going?"]')
+#     searchBox.send_keys('London')
+#     sleep(2)
+#     searchResult = driver.find_element(By.XPATH, '//div[@data-testid="autocomplete-result"]')
+#     searchResult.click()
+#     sleep(2)
+#     datePicker = driver.find_element(By.XPATH, '//button[@data-testid="searchbox-dates-container"]')
+#     datePicker.click()
+#     datePicker.click()
+#     today = str(date.today())
+#     datexPath = '//span[@data-date="'
+#     datexPath = datexPath + today + '"]'
+#     selectedDate = driver.find_element(By.XPATH, datexPath)
+#     selectedDate.click()
+#     sleep(5)
+#     searchButton = driver.find_element(By.XPATH, '//span[text()="Search"]')
+#     searchButton.click()
+#     sleep(10)
+#     noCardFilter = driver.find_element(By.XPATH, '//div[text()="Book without credit card"]')
+#     noCardFilter.click()
+#     sleep(10)
+#     firstHotel = driver.find_element(By.XPATH, '//div[@data-testid="property-card"]')
+#     priceDataFirstHotel=firstHotel.find_element(By.XPATH, './/strong[text()="No prepayment needed"]').text
+#     assert (priceDataFirstHotel == "No prepayment needed"), 'Test Failed'
+
+
+#TC_45 - Ensure beachfront hotels can be filtered
+
+# def test_25(driver):
+#
+#     searchBox = driver.find_element(By.XPATH, '//input[@placeholder="Where are you going?"]')
+#     searchBox.send_keys('Maldives')
+#     sleep(2)
+#     searchResult = driver.find_element(By.XPATH, '//div[@data-testid="autocomplete-result"]')
+#     searchResult.click()
+#     sleep(2)
+#     datePicker = driver.find_element(By.XPATH, '//button[@data-testid="searchbox-dates-container"]')
+#     datePicker.click()
+#     datePicker.click()
+#     today = str(date.today())
+#     datexPath = '//span[@data-date="'
+#     datexPath = datexPath + today + '"]'
+#     selectedDate = driver.find_element(By.XPATH, datexPath)
+#     selectedDate.click()
+#     sleep(5)
+#     searchButton = driver.find_element(By.XPATH, '//span[text()="Search"]')
+#     searchButton.click()
+#     sleep(10)
+#     beachSection = driver.find_element(By.XPATH, '//div[@data-filters-group="ht_beach"]')
+#     beachCheckbox= beachSection.find_element(By.XPATH, './/input')
+#     beachCheckbox.click()
+#     sleep(10)
+#     firstHotel = driver.find_element(By.XPATH, '//div[@data-testid="property-card"]')
+#     firstHotel.click()
+#     sleep(5)
+#     driver.switch_to.window(driver.window_handles[1])
+#     sleep(5)
+#     PropertySpecs = driver.find_element(By.XPATH, '//div[@data-testid="PropertyBadges-wrapper"]').text
+#     assert ("Beachfront" in PropertySpecs), 'Test Failed'
+
+#TC_46 - Verify search results display options for flexible travel dates
+
+# def test_26(driver):
+#     searchBox = driver.find_element(By.XPATH, '//input[@placeholder="Where are you going?"]')
+#     searchBox.send_keys('Paris')
+#     sleep(2)
+#     searchResult = driver.find_element(By.XPATH, '//div[@data-testid="autocomplete-result"]')
+#     searchResult.click()
+#     sleep(2)
+#     datePicker = driver.find_element(By.XPATH, '//button[@data-testid="searchbox-dates-container"]')
+#     datePicker.click()
+#     datePicker.click()
+#     sleep(5)
+#     flexibleButton = driver.find_element(By.ID, 'flexible-searchboxdatepicker-tab-trigger')
+#     flexibleButton.click()
+#     sleep(5)
+#     weekEndCheckbox = driver.find_element(By.XPATH, '//div[@data-testid="flexible-dates-day"]')
+#     weekEndCheckbox.click()
+#     monthSelection = driver.find_element(By.XPATH, '//label[@data-testid="flexible-dates-month"]')
+#     monthSelection.click()
+#     sleep(5)
+#     searchButton = driver.find_element(By.XPATH, '//span[text()="Search"]')
+#     searchButton.click()
+#     sleep(5)
+
+#TC_48 - Ensure hyperlink “Terms & conditions” lead to the desired destination
+
+# def test_27(driver):
+#     registerButton = driver.find_element(By.XPATH,'//span[text()="Register"]')
+#     registerButton.click()
+#     sleep(3)
+#     termsAndConditonsLink = driver.find_element(By.XPATH, '//span[text()="Terms & Conditions"]')
+#     termsAndConditonsLink.click()
+#     driver.switch_to.window(driver.window_handles[1])
+#     headerText = driver.find_element(By.XPATH, '//h1').text
+#     assert (headerText == "Customer terms of service"), 'Test Failed'
+
+
+#TC_49 - Ensure hyperlink “Privacy statement” lead to the desired destination
+
+# def test_28(driver):
+#     registerButton = driver.find_element(By.XPATH,'//span[text()="Register"]')
+#     registerButton.click()
+#     sleep(3)
+#     PrivacyStatementLink = driver.find_element(By.XPATH, '//span[text()="Privacy Statement"]')
+#     PrivacyStatementLink.click()
+#     driver.switch_to.window(driver.window_handles[1])
+#     headerText = driver.find_element(By.ID, 'privacy-statement').text
+#     assert ("Privacy & Cookie Statement" in headerText), 'Test Failed'
+
+
+#TC - Testing to see button "save to next trip" works
+
+# def test_29(driver):
+#     searchBox = driver.find_element(By.XPATH, '//input[@placeholder="Where are you going?"]')
+#     searchBox.send_keys('London')
+#     sleep(2)
+#     searchResult = driver.find_element(By.XPATH, '//div[@data-testid="autocomplete-result"]')
+#     searchResult.click()
+#     sleep(2)
+#     datePicker = driver.find_element(By.XPATH, '//button[@data-testid="searchbox-dates-container"]')
+#     datePicker.click()
+#     datePicker.click()
+#     today = str(date.today())
+#     datexPath= '//span[@data-date="'
+#     datexPath = datexPath+today+'"]'
+#     selectedDate = driver.find_element(By.XPATH,datexPath)
+#     selectedDate.click()
+#     sleep(2)
+#     searchButton = driver.find_element(By.XPATH, '//span[text()="Search"]')
+#     searchButton.click()
+#     sleep(2)
+#     hotelName = driver.find_element(By.XPATH,'//div[@data-testid="title"]').text
+#     saveFavouriteButton = driver.find_element(By.XPATH, '//button[@data-testid="wishlist-button"]')
+#     saveFavouriteButton.click()
+#     sleep(2)
+#     myNextTripButton = driver.find_element(By.XPATH, '//span[text()="My next trip"]')
+#     myNextTripButton.click()
+#     sleep(2)
+#     driver.switch_to.window(driver.window_handles[1])
+#     sleep(10)
+#     savedHotelName = driver.find_element(By.XPATH, '//h3').text
+#     sleep(2)
+#     assert (hotelName == savedHotelName), 'Test failed'
+
+
+# TC - removing a hotel from favourite list
+
+def test_30(driver):
+    searchBox = driver.find_element(By.XPATH, '//input[@placeholder="Where are you going?"]')
+    searchBox.send_keys('London')
+    sleep(2)
+    searchResult = driver.find_element(By.XPATH, '//div[@data-testid="autocomplete-result"]')
+    searchResult.click()
+    sleep(2)
+    datePicker = driver.find_element(By.XPATH, '//button[@data-testid="searchbox-dates-container"]')
+    datePicker.click()
+    datePicker.click()
+    today = str(date.today())
+    datexPath = '//span[@data-date="'
+    datexPath = datexPath + today + '"]'
+    selectedDate = driver.find_element(By.XPATH, datexPath)
+    selectedDate.click()
+    sleep(2)
+    searchButton = driver.find_element(By.XPATH, '//span[text()="Search"]')
+    searchButton.click()
+    sleep(2)
+    saveFavouriteButton = driver.find_element(By.XPATH, '//button[@data-testid="wishlist-button"]')
+    saveFavouriteButton.click()
+    sleep(2)
+    myNextTripButton = driver.find_element(By.XPATH, '//span[text()="My next trip"]')
+    myNextTripButton.click()
+    sleep(2)
+    driver.switch_to.window(driver.window_handles[1])
+    sleep(10)
+    unsaveFavouriteButton = driver.find_element(By.XPATH, '//button[@data-testid="wishlist-button"]')
+    unsaveFavouriteButton.click()
+    sleep(2)
+    afterDeletionText = driver.find_element(By.XPATH, '//h3').text
+    assert (afterDeletionText == 'Here are 3 simple steps to get you started:'), 'Test failed'
+
+
+
+
