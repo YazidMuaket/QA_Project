@@ -850,7 +850,7 @@ def test_30(driver):
     sleep(10)
     unsaveFavouriteButton = driver.find_element(By.XPATH, '//button[@data-testid="wishlist-button"]')
     unsaveFavouriteButton.click()
-    sleep(2)
+    sleep(3)
     afterDeletionText = driver.find_element(By.XPATH, '//h3').text
     assert (afterDeletionText == 'Here are 3 simple steps to get you started:'), 'Test failed'
 
